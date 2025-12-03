@@ -9,95 +9,108 @@
 <style>
     body {
         margin: 0;
-        background: #020b24;
+        background: linear-gradient(180deg, #0b1534, #0f1f47, #162a55);
         font-family: 'Inter', sans-serif;
-        color: #e6ecff;
+        color: #eaf1ff;
     }
 
     header {
-        padding: 60px 20px;
+        padding: 80px 20px;
         text-align: center;
-        background: linear-gradient(180deg, #001133, #020b24);
+        background: linear-gradient(180deg, #12204a, #0f1a3b);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     header h1 {
-        font-size: 42px;
+        font-size: 44px;
         font-weight: 700;
-        color: #4da3ff;
+        background: linear-gradient(90deg, #64b4ff, #9ed0ff);
+        -webkit-background-clip: text;
+        color: transparent;
     }
 
     header p {
         font-size: 20px;
-        color: #b7c8ff;
+        color: #c9d8ff;
+        margin-top: 10px;
     }
 
     .section {
-        padding: 50px 10%;
+        padding: 60px 10%;
     }
 
     h2 {
         font-size: 32px;
-        border-left: 5px solid #4da3ff;
+        border-left: 5px solid #64b4ff;
         padding-left: 15px;
-        margin-bottom: 20px;
-        color: #74b8ff;
+        margin-bottom: 25px;
+        color: #a7ccff;
     }
 
     h3 {
         font-size: 24px;
-        margin-top: 40px;
-        color: #9ac4ff;
-        border-left: 4px solid #4da3ff;
+        margin-top: 35px;
+        color: #c7ddff;
+        border-left: 4px solid #64b4ff;
         padding-left: 10px;
     }
 
     .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+        gap: 35px;
         margin-top: 20px;
     }
 
     .card {
-        background: #071734;
+        background: rgba(255,255,255,0.06);
         padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.4);
-        transition: 0.3s;
-        border: 1px solid #0f285c;
+        border-radius: 14px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 0 25px rgba(0,0,0,0.25);
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: 0.3s ease;
     }
 
     .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 0 30px rgba(0,0,0,0.6);
+        transform: translateY(-8px);
+        box-shadow: 0 0 35px rgba(120,170,255,0.35);
+        border: 1px solid rgba(130,180,255,0.3);
     }
 
     .card img, .card video {
         width: 100%;
-        border-radius: 10px;
+        border-radius: 12px;
+    }
+
+    .download-area {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 20px;
     }
 
     .download-btn {
         display: inline-block;
-        margin-top: 10px;
-        padding: 12px 20px;
-        background: #4da3ff;
-        color: #020b24;
-        border-radius: 8px;
+        padding: 14px 22px;
+        background: linear-gradient(90deg, #64b4ff, #8ccaff);
+        color: #0a1633;
+        border-radius: 10px;
         font-weight: 600;
         text-decoration: none;
         transition: 0.3s;
     }
 
     .download-btn:hover {
-        background: #72bbff;
+        background: linear-gradient(90deg, #7fc4ff, #aedaff);
     }
 
     footer {
-        padding: 30px;
+        padding: 40px;
         text-align: center;
-        background: #00081c;
-        color: #6d84b8;
+        background: #0a1633;
+        color: #8fa4d4;
+        margin-top: 40px;
     }
 </style>
 </head>
@@ -114,20 +127,29 @@
 <section class="section">
     <h2>📌 Project Overview</h2>
     <p>
-        This project demonstrates a unified cognitive-robotics pipeline integrating YOLOv8-based object detection,
-        natural-language parsing, uncertainty-aware reasoning, and IK-driven manipulation inside CoppeliaSim.
-        The robot interprets commands such as <i>“pick the knight and put it in the right bin”</i> and executes
-        them using multimodal grounding and closed-loop action control.
+        A complete end-to-end cognitive robotics system integrating YOLOv8 perception, natural-language
+        parsing, uncertainty-aware reasoning, and inverse-kinematics control. The robot interprets commands
+        like <i>“pick the knight and put it in the right bin”</i> and executes them through grounded multimodal
+        perception and closed-loop manipulation inside CoppeliaSim.
     </p>
 </section>
 
-<!-- ---------------- PPT ---------------- -->
+
+<!-- ---------------- Downloads ---------------- -->
 <section class="section">
-    <h2>📄 Project Presentation</h2>
-    <a class="download-btn" href="Vision-Language-Action-Integration-for-Robotic-Chess-Manipulation.pptx" download>
-        ⬇ Download Full PPT
-    </a>
+    <h2>📄 Downloads</h2>
+    
+    <div class="download-area">
+        <a class="download-btn" href="assets/Vision-Language-Action-Integration-for-Robotic-Chess-Manipulation.pptx" download>
+            ⬇ Download Presentation (PPTX)
+        </a>
+
+        <a class="download-btn" href="assets/report.pdf" download>
+            ⬇ Download Full Report (PDF)
+        </a>
+    </div>
 </section>
+
 
 <!-- ---------------- Images ---------------- -->
 <section class="section">
@@ -135,21 +157,22 @@
 
     <div class="grid">
         <div class="card">
-            <img src="Annotated_chess.png">
+            <img src="assets/Annotated_chess.png">
             <p>YOLOv8 Detection — All Chess Pieces</p>
         </div>
 
         <div class="card">
-            <img src="Annotated_knight.png">
+            <img src="assets/Annotated_knight.png">
             <p>Knight Detection</p>
         </div>
 
         <div class="card">
-            <img src="Annotated_queen.png">
+            <img src="assets/Annotated_queen.png">
             <p>Queen Detection</p>
         </div>
     </div>
 </section>
+
 
 <!-- ---------------- Detection Video ---------------- -->
 <section class="section">
@@ -158,12 +181,13 @@
     <div class="grid">
         <div class="card">
             <video controls>
-                <source src="detection.mp4" type="video/mp4">
+                <source src="assets/detection.mp4" type="video/mp4">
             </video>
-            <p>Full YOLOv8 Detection & Probabilistic Filtering</p>
+            <p>Complete YOLOv8 Detection + Probabilistic Filtering</p>
         </div>
     </div>
 </section>
+
 
 <!-- ---------------- Chess Videos ---------------- -->
 <section class="section">
@@ -173,27 +197,28 @@
     <div class="grid">
 
         <div class="card">
-            <video controls><source src="pawn_left.mp4" type="video/mp4"></video>
-            <p>Pick the pawn and place in the left bin</p>
+            <video controls><source src="assets/pawn_left.mp4" type="video/mp4"></video>
+            <p>Pick the pawn → left bin</p>
         </div>
 
         <div class="card">
-            <video controls><source src="queen_right.mp4" type="video/mp4"></video>
-            <p>Pick the queen and place in the right bin</p>
+            <video controls><source src="assets/queen_right.mp4" type="video/mp4"></video>
+            <p>Pick the queen → right bin</p>
         </div>
 
         <div class="card">
-            <video controls><source src="king_right.mp4" type="video/mp4"></video>
-            <p>Pick the king and place in the right bin</p>
+            <video controls><source src="assets/king_right.mp4" type="video/mp4"></video>
+            <p>Pick the king → right bin</p>
         </div>
 
         <div class="card">
-            <video controls><source src="knight_right.mp4" type="video/mp4"></video>
-            <p>Pick the knight and place in the right bin</p>
+            <video controls><source src="assets/knight_right.mp4" type="video/mp4"></video>
+            <p>Pick the knight → right bin</p>
         </div>
 
     </div>
 </section>
+
 
 <!-- ---------------- Cube Videos ---------------- -->
 <section class="section">
@@ -202,19 +227,20 @@
 
     <div class="grid">
         <div class="card">
-            <video controls><source src="cube_green_left.mp4" type="video/mp4"></video>
-            <p>Green Cube — Left Bin</p>
+            <video controls><source src="assets/cube_green_left.mp4" type="video/mp4"></video>
+            <p>Green Cube → left bin</p>
         </div>
 
         <div class="card">
-            <video controls><source src="blue_right.mp4" type="video/mp4"></video>
-            <p>Blue Cube — Right Bin</p>
+            <video controls><source src="assets/blue_right.mp4" type="video/mp4"></video>
+            <p>Blue Cube → right bin</p>
         </div>
     </div>
 </section>
 
+
 <footer>
-    Created by Aamna Alshehhi — KU Robotics, 2025  
+    Created by Aamna Alshehhi — Khalifa University Robotics • 2025  
 </footer>
 
 </body>
