@@ -112,6 +112,32 @@
         color: #8fa4d4;
         margin-top: 40px;
     }
+
+    /* 2x2 layout for chess videos */
+    .chess-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 35px;
+        justify-content: center;
+    }
+
+/* each card takes ~half the row on desktop */
+    .chess-grid .card {
+        flex: 1 1 320px;       /* minimum width */
+        max-width: 420px;      /* so you get two per row on wide screens */
+    }
+
+/* detection video smaller & centered */
+    .detection-row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .detection-card {
+        max-width: 480px;
+        width: 100%;
+    }
+
 </style>
 </head>
 
