@@ -7,268 +7,497 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        margin: 0;
-        background: linear-gradient(180deg, #0b1534, #0f1f47, #162a55);
-        font-family: 'Inter', sans-serif;
-        color: #eaf1ff;
+    :root {
+        --bg1: #0b1534;
+        --bg2: #0f1f47;
+        --bg3: #162a55;
+        --accent: #64b4ff;
+        --accent-soft: #9ed0ff;
+        --card-bg: rgba(255,255,255,0.06);
+        --card-border: rgba(255,255,255,0.1);
+        --text-main: #eaf1ff;
+        --text-soft: #c9d8ff;
     }
 
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        background: linear-gradient(180deg, var(--bg1), var(--bg2), var(--bg3));
+        font-family: 'Inter', sans-serif;
+        color: var(--text-main);
+    }
+
+    /* ===== Top Navigation ===== */
+    .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+        background: linear-gradient(90deg, rgba(11,21,52,0.94), rgba(15,31,71,0.96));
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-inner {
+        width: 100%;
+        max-width: 1100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 16px;
+    }
+
+    .nav-title {
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--accent-soft);
+        letter-spacing: 0.03em;
+    }
+
+    .nav-links a {
+        margin-left: 18px;
+        color: var(--text-soft);
+        text-decoration: none;
+        font-size: 14px;
+        position: relative;
+        padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        border-radius: 4px;
+        transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+        width: 100%;
+    }
+
+    /* ===== Header / Hero ===== */
     header {
-        padding: 80px 20px;
+        padding: 72px 16px 60px;
         text-align: center;
-        background: linear-gradient(180deg, #12204a, #0f1a3b);
+        background: radial-gradient(circle at top, #1d3c7c 0, #0f1a3b 45%, #0c1533 100%);
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    header::before,
+    header::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.35;
+        z-index: -1;
+    }
+
+    header::before {
+        width: 380px;
+        height: 380px;
+        background: #4da3ff;
+        top: -120px;
+        left: -100px;
+    }
+
+    header::after {
+        width: 320px;
+        height: 320px;
+        background: #7f6bff;
+        bottom: -150px;
+        right: -80px;
+    }
+
+    .hero-inner {
+        max-width: 900px;
+        margin: 0 auto;
     }
 
     header h1 {
-        font-size: 44px;
+        font-size: 40px;
         font-weight: 700;
-        background: linear-gradient(90deg, #64b4ff, #9ed0ff);
+        background: linear-gradient(90deg, var(--accent), var(--accent-soft));
         -webkit-background-clip: text;
         color: transparent;
+        margin: 0 0 12px;
     }
 
     header p {
-        font-size: 20px;
-        color: #c9d8ff;
-        margin-top: 10px;
+        font-size: 18px;
+        color: var(--text-soft);
+        margin-top: 6px;
     }
 
+    .hero-tagline {
+        margin-top: 18px;
+        font-size: 15px;
+        opacity: 0.85;
+    }
+
+    /* ===== Sections ===== */
     .section {
-        padding: 60px 10%;
+        padding: 56px 16px;
+    }
+
+    .section-inner {
+        max-width: 1100px;
+        margin: 0 auto;
     }
 
     h2 {
-        font-size: 32px;
-        border-left: 5px solid #64b4ff;
+        font-size: 30px;
+        border-left: 5px solid var(--accent);
         padding-left: 15px;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         color: #a7ccff;
     }
 
     h3 {
-        font-size: 24px;
-        margin-top: 35px;
+        font-size: 22px;
+        margin-top: 30px;
         color: #c7ddff;
-        border-left: 4px solid #64b4ff;
+        border-left: 4px solid var(--accent);
         padding-left: 10px;
     }
 
+    /* ===== Cards / Grid ===== */
     .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
-        gap: 35px;
+        gap: 30px;
         margin-top: 20px;
     }
 
     .card {
-        background: rgba(255,255,255,0.06);
-        padding: 20px;
+        background: var(--card-bg);
+        padding: 18px;
         border-radius: 14px;
         backdrop-filter: blur(8px);
-        box-shadow: 0 0 25px rgba(0,0,0,0.25);
-        border: 1px solid rgba(255,255,255,0.1);
-        transition: 0.3s ease;
+        box-shadow: 0 0 22px rgba(0,0,0,0.25);
+        border: 1px solid var(--card-border);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
     }
 
     .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 0 35px rgba(120,170,255,0.35);
-        border: 1px solid rgba(130,180,255,0.3);
+        transform: translateY(-6px);
+        box-shadow: 0 0 32px rgba(120,170,255,0.35);
+        border: 1px solid rgba(130,180,255,0.35);
     }
 
     .card img, .card video {
         width: 100%;
         border-radius: 12px;
+        display: block;
+        margin-bottom: 10px;
     }
 
+    .card p {
+        margin: 4px 0 0;
+        font-size: 14px;
+        color: var(--text-soft);
+    }
+
+    /* ===== Downloads ===== */
     .download-area {
         display: flex;
-        gap: 20px;
+        gap: 16px;
         flex-wrap: wrap;
-        margin-top: 20px;
+        margin-top: 14px;
     }
 
     .download-btn {
-        display: inline-block;
-        padding: 14px 22px;
-        background: linear-gradient(90deg, #64b4ff, #8ccaff);
+        display: inline-flex;
+        align-items: center;
+        padding: 12px 20px;
+        background: radial-gradient(circle at top left, #8ccaff, #64b4ff);
         color: #0a1633;
-        border-radius: 10px;
+        border-radius: 999px;
         font-weight: 600;
         text-decoration: none;
-        transition: 0.3s;
+        font-size: 14px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .download-btn span {
+        margin-left: 6px;
     }
 
     .download-btn:hover {
-        background: linear-gradient(90deg, #7fc4ff, #aedaff);
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+        box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+    }
+
+    /* ===== Layout tweaks ===== */
+
+    /* 2x2 layout for chess videos on desktop */
+    .chess-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+        .chess-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* detection video smaller & centered */
+    .detection-row {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .detection-card {
+        max-width: 520px;
+        width: 100%;
+    }
+
+    /* ===== Scroll reveal animation ===== */
+    .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+        opacity: 1;
+        transform: none;
     }
 
     footer {
-        padding: 40px;
+        padding: 34px;
         text-align: center;
         background: #0a1633;
         color: #8fa4d4;
         margin-top: 40px;
+        font-size: 14px;
     }
-
-    /* 2x2 layout for chess videos */
-    .chess-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 35px;
-        justify-content: center;
-    }
-
-/* each card takes ~half the row on desktop */
-    .chess-grid .card {
-        flex: 1 1 320px;       /* minimum width */
-        max-width: 420px;      /* so you get two per row on wide screens */
-    }
-
-/* detection video smaller & centered */
-    .detection-row {
-        display: flex;
-        justify-content: center;
-    }
-
-    .detection-card {
-        max-width: 480px;
-        width: 100%;
-    }
-
 </style>
 </head>
 
 
 <body>
 
+<!-- ===== NAVBAR ===== -->
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="nav-title">VLA Robotic Chess</div>
+        <div class="nav-links">
+            <a href="#overview">Overview</a>
+            <a href="#downloads">Downloads</a>
+            <a href="#images">Images</a>
+            <a href="#detection">Detection</a>
+            <a href="#chess">Chess</a>
+            <a href="#cubes">Cubes</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
 <header>
-    <h1>Vision–Language–Action Integration<br>for Robotic Chess Manipulation</h1>
-    <p>YOLOv8 • Language Reasoning • Probabilistic Filtering • IK Manipulation</p>
+    <div class="hero-inner">
+        <h1>Vision–Language–Action<br>Robotic Chess Manipulation</h1>
+        <p>YOLOv8 Perception · Language Grounding · Probabilistic Reasoning · IK Control</p>
+        <p class="hero-tagline">
+            A cognitively enabled robotic system that sees, understands, and manipulates chess pieces in simulation.
+        </p>
+    </div>
 </header>
 
-<!-- ---------------- Overview ---------------- -->
-<section class="section">
-    <h2>📌 Project Overview</h2>
-    <p>
-        A complete end-to-end cognitive robotics system integrating YOLOv8 perception, natural-language
-        parsing, uncertainty-aware reasoning, and inverse-kinematics control. The robot interprets commands
-        like <i>“pick the knight and put it in the right bin”</i> and executes them through grounded multimodal
-        perception and closed-loop manipulation inside CoppeliaSim.
-    </p>
-</section>
-
-
-<!-- ---------------- Downloads ---------------- -->
-<section class="section">
-    <h2>📄 Downloads</h2>
-    
-    <div class="download-area">
-        <a class="download-btn" href="assets/Vision-Language-Action-Integration-for-Robotic-Chess-Manipulation.pptx" download>
-            ⬇ Download Presentation (PPTX)
-        </a>
-
-        <a class="download-btn" href="assets/report.pdf" download>
-            ⬇ Download Full Report (PDF)
-        </a>
+<!-- ===== OVERVIEW ===== -->
+<section class="section" id="overview">
+    <div class="section-inner reveal">
+        <h2>📌 Project Overview</h2>
+        <p>
+            This project develops a complete end-to-end cognitive robotics system that combines
+            <b>YOLOv8 object detection</b>, <b>natural-language command parsing</b>, 
+            <b>uncertainty-aware probabilistic reasoning</b>, and <b>inverse-kinematics control</b>.
+            The robot interprets commands such as <i>“pick the knight and put it in the right bin”</i>
+            and executes them via grounded perception and closed-loop manipulation in CoppeliaSim.
+        </p>
     </div>
 </section>
 
+<!-- ===== DOWNLOADS ===== -->
+<section class="section" id="downloads">
+    <div class="section-inner reveal">
+        <h2>📄 Downloads</h2>
+        <p>Slides and full technical report for the Vision–Language–Action system.</p>
+        <div class="download-area">
+            <a class="download-btn" href="assets/Vision-Language-Action-Integration-for-Robotic-Chess-Manipulation.pptx" download>
+                ⬇ <span>Presentation (PPTX)</span>
+            </a>
 
-<!-- ---------------- Images ---------------- -->
-<section class="section">
-    <h2>🖼 Detection Results (Images)</h2>
-
-    <div class="grid">
-        <div class="card">
-            <img src="assets/Annotated_chess.png">
-            <p>YOLOv8 Detection — All Chess Pieces</p>
-        </div>
-
-        <div class="card">
-            <img src="assets/Annotated_knight.png">
-            <p>Knight Detection</p>
-        </div>
-
-        <div class="card">
-            <img src="assets/Annotated_queen.png">
-            <p>Queen Detection</p>
+            <a class="download-btn" href="assets/report.pdf" download>
+                ⬇ <span>Full Report (PDF)</span>
+            </a>
         </div>
     </div>
 </section>
 
+<!-- ===== IMAGES ===== -->
+<section class="section" id="images">
+    <div class="section-inner reveal">
+        <h2>🖼 Detection Results (Images)</h2>
 
-<!-- ---------------- Detection Video ---------------- -->
-<section class="section">
-    <h2>🔍 Detection in Real Time</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="assets/Annotated_chess.png" alt="All chess pieces annotated">
+                <p>YOLOv8 detection of all chess pieces in the scene.</p>
+            </div>
 
-    <div class="detection-row">
-        <div class="card detection-card">
-            <video controls>
-                <source src="assets/detection.mp4" type="video/mp4">
-            </video>
-            <p>Complete YOLOv8 Detection + Probabilistic Filtering</p>
+            <div class="card">
+                <img src="assets/Annotated_knight.png" alt="Knight annotated">
+                <p>Zoomed view of knight detection and bounding box.</p>
+            </div>
+
+            <div class="card">
+                <img src="assets/Annotated_queen.png" alt="Queen annotated">
+                <p>Queen detection used for language-conditioned actions.</p>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- ===== DETECTION VIDEO ===== -->
+<section class="section" id="detection">
+    <div class="section-inner reveal">
+        <h2>🔍 Detection in Real Time</h2>
+        <p>
+            Real-time YOLOv8 inference feeds a probabilistic reasoning module, which filters low-confidence
+            detections and selects the most reliable target before any action is planned.
+        </p>
 
-<section class="section">
-    <h2>♟ Chess Piece Manipulation (VLA Pipeline)</h2>
-    <h3>Chess Videos</h3>
-
-    <div class="chess-grid">
-
-        <div class="card">
-            <video controls><source src="assets/pawn_left.mp4" type="video/mp4"></video>
-            <p>Pick the pawn → left bin</p>
-        </div>
-
-        <div class="card">
-            <video controls><source src="assets/queen_right.mp4" type="video/mp4"></video>
-            <p>Pick the queen → right bin</p>
-        </div>
-
-        <div class="card">
-            <video controls><source src="assets/king_right.mp4" type="video/mp4"></video>
-            <p>Pick the king → right bin</p>
-        </div>
-
-        <div class="card">
-            <video controls><source src="assets/knight_right.mp4" type="video/mp4"></video>
-            <p>Pick the knight → right bin</p>
-        </div>
-
-    </div>
-</section>
-
-
-
-
-<!-- ---------------- Cube Videos ---------------- -->
-<section class="section">
-    <h2>🟦 Colored Cube Manipulation</h2>
-    <h3>Cubes Videos</h3>
-
-    <div class="grid">
-        <div class="card">
-            <video controls><source src="assets/cube_green_left.mp4" type="video/mp4"></video>
-            <p>Green Cube → left bin</p>
-        </div>
-
-        <div class="card">
-            <video controls><source src="assets/blue_right.mp4" type="video/mp4"></video>
-            <p>Blue Cube → right bin</p>
+        <div class="detection-row">
+            <div class="card detection-card">
+                <video controls>
+                    <source src="assets/detection.mp4" type="video/mp4">
+                </video>
+                <p>YOLOv8 detection stream with uncertainty-aware post-processing.</p>
+            </div>
         </div>
     </div>
 </section>
 
+<!-- ===== CHESS VIDEOS ===== -->
+<section class="section" id="chess">
+    <div class="section-inner reveal">
+        <h2>♟ Chess Piece Manipulation (VLA Pipeline)</h2>
+        <h3>Chess Videos</h3>
+
+        <div class="chess-grid">
+            <div class="card">
+                <video controls>
+                    <source src="assets/pawn_left.mp4" type="video/mp4">
+                </video>
+                <p>Pick the pawn → place in the left bin.</p>
+            </div>
+
+            <div class="card">
+                <video controls>
+                    <source src="assets/queen_right.mp4" type="video/mp4">
+                </video>
+                <p>Pick the queen → place in the right bin.</p>
+            </div>
+
+            <div class="card">
+                <video controls>
+                    <source src="assets/king_right.mp4" type="video/mp4">
+                </video>
+                <p>Pick the king → place in the right bin.</p>
+            </div>
+
+            <div class="card">
+                <video controls>
+                    <source src="assets/knight_right.mp4" type="video/mp4">
+                </video>
+                <p>Pick the knight → place in the right bin.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CUBE VIDEOS ===== -->
+<section class="section" id="cubes">
+    <div class="section-inner reveal">
+        <h2>🟦 Colored Cube Manipulation</h2>
+        <h3>Cubes Videos</h3>
+
+        <div class="grid">
+            <div class="card">
+                <video controls>
+                    <source src="assets/cube_green_left.mp4" type="video/mp4">
+                </video>
+                <p>Green cube → left bin, using HSV-based baseline pipeline.</p>
+            </div>
+
+            <div class="card">
+                <video controls>
+                    <source src="assets/blue_right.mp4" type="video/mp4">
+                </video>
+                <p>Blue cube → right bin, demonstrating closed-loop motion.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer>
-    Created by Aamna Alshehhi — Khalifa University Robotics • 2025  
+    Created by Aamna Alshehhi — Khalifa University Robotics • 2025
 </footer>
+
+<!-- ===== Small JS for scroll-reveal + active nav ===== -->
+<script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
+
+    // Active link highlight
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => {
+            const top = sec.offsetTop - 120;
+            if (pageYOffset >= top) current = sec.getAttribute('id');
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
