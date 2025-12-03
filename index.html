@@ -43,6 +43,14 @@
         color: #74b8ff;
     }
 
+    h3 {
+        font-size: 24px;
+        margin-top: 40px;
+        color: #9ac4ff;
+        border-left: 4px solid #4da3ff;
+        padding-left: 10px;
+    }
+
     .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
@@ -99,105 +107,114 @@
 
 <header>
     <h1>Vision–Language–Action Integration<br>for Robotic Chess Manipulation</h1>
-    <p>YOLOv8 • Language Reasoning • IK Manipulation • CoppeliaSim</p>
+    <p>YOLOv8 • Language Reasoning • Probabilistic Filtering • IK Manipulation</p>
 </header>
 
-<!-- ---------------- About Section ---------------- -->
+<!-- ---------------- Overview ---------------- -->
 <section class="section">
     <h2>📌 Project Overview</h2>
     <p>
-        This project demonstrates a complete cognitive-robotics pipeline integrating YOLO-based vision,
-        language parsing, probabilistic reasoning, and IK-driven manipulation inside CoppeliaSim.
-        Chess pieces are detected, grounded to symbolic language meanings, and manipulated using a 
-        closed-loop action controller.
+        This project demonstrates a unified cognitive-robotics pipeline integrating YOLOv8-based object detection,
+        natural-language parsing, uncertainty-aware reasoning, and IK-driven manipulation inside CoppeliaSim.
+        The robot interprets commands such as <i>“pick the knight and put it in the right bin”</i> and executes
+        them using multimodal grounding and closed-loop action control.
     </p>
 </section>
 
-<!-- ---------------- PPT Download ---------------- -->
+<!-- ---------------- PPT ---------------- -->
 <section class="section">
     <h2>📄 Project Presentation</h2>
-    <a class="download-btn" href="assets/Vision-Language-Action-Integration-for-Robotic-Chess-Manipulation.pptx" download>
-        ⬇ Download Full PPT (PowerPoint)
+    <a class="download-btn" href="Vision-Language-Action-Integration-for-Robotic-Chess-Manipulation.pptx" download>
+        ⬇ Download Full PPT
     </a>
 </section>
 
-<!-- ---------------- Image Gallery ---------------- -->
+<!-- ---------------- Images ---------------- -->
 <section class="section">
     <h2>🖼 Detection Results (Images)</h2>
 
     <div class="grid">
-
         <div class="card">
-            <img src="assets/Annotated_chess.png">
+            <img src="Annotated_chess.png">
             <p>YOLOv8 Detection — All Chess Pieces</p>
         </div>
 
         <div class="card">
-            <img src="assets/Annotated_knight.png">
+            <img src="Annotated_knight.png">
             <p>Knight Detection</p>
         </div>
 
         <div class="card">
-            <img src="assets/Annotated_queen.png">
+            <img src="Annotated_queen.png">
             <p>Queen Detection</p>
         </div>
-
     </div>
 </section>
 
-<!-- ---------------- Videos ---------------- -->
+<!-- ---------------- Detection Video ---------------- -->
 <section class="section">
-    <h2>🎥 Simulation Videos</h2>
+    <h2>🔍 Detection Pipeline Overview</h2>
+
+    <div class="grid">
+        <div class="card">
+            <video controls>
+                <source src="detection.mp4" type="video/mp4">
+            </video>
+            <p>Full YOLOv8 Detection & Probabilistic Filtering</p>
+        </div>
+    </div>
+</section>
+
+<!-- ---------------- Chess Videos ---------------- -->
+<section class="section">
+    <h2>♟ Chess Piece Manipulation (VLA Pipeline)</h2>
+    <h3>Chess Videos</h3>
 
     <div class="grid">
 
         <div class="card">
-            <video controls>
-                <source src="assets/pawn_left.mp4" type="video/mp4">
-            </video>
-            <p>Pick the pawn and place in left bin</p>
+            <video controls><source src="pawn_left.mp4" type="video/mp4"></video>
+            <p>Pick the pawn and place in the left bin</p>
         </div>
 
         <div class="card">
-            <video controls>
-                <source src="assets/queen_right.mp4" type="video/mp4">
-            </video>
-            <p>Pick the queen and place in right bin</p>
+            <video controls><source src="queen_right.mp4" type="video/mp4"></video>
+            <p>Pick the queen and place in the right bin</p>
         </div>
 
         <div class="card">
-            <video controls>
-                <source src="assets/knight_right.mp4" type="video/mp4">
-            </video>
-            <p>Pick the knight and place in right bin</p>
+            <video controls><source src="king_right.mp4" type="video/mp4"></video>
+            <p>Pick the king and place in the right bin</p>
         </div>
 
         <div class="card">
-            <video controls>
-                <source src="assets/king_right.mp4" type="video/mp4">
-            </video>
-            <p>Pick the king and place in right bin</p>
-        </div>
-
-        <div class="card">
-            <video controls>
-                <source src="assets/cube_green_left.mp4" type="video/mp4">
-            </video>
-            <p>Green cube detection & placement</p>
-        </div>
-
-        <div class="card">
-            <video controls>
-                <source src="assets/blue_right.mp4" type="video/mp4">
-            </video>
-            <p>Blue cube detection & placement</p>
+            <video controls><source src="knight_right.mp4" type="video/mp4"></video>
+            <p>Pick the knight and place in the right bin</p>
         </div>
 
     </div>
 </section>
 
+<!-- ---------------- Cube Videos ---------------- -->
+<section class="section">
+    <h2>🟦 Colored Cube Manipulation</h2>
+    <h3>Cubes Videos</h3>
+
+    <div class="grid">
+        <div class="card">
+            <video controls><source src="cube_green_left.mp4" type="video/mp4"></video>
+            <p>Green Cube — Left Bin</p>
+        </div>
+
+        <div class="card">
+            <video controls><source src="blue_right.mp4" type="video/mp4"></video>
+            <p>Blue Cube — Right Bin</p>
+        </div>
+    </div>
+</section>
+
 <footer>
-    Created by Aamna Alshehhi — KU Robotics 2025  
+    Created by Aamna Alshehhi — KU Robotics, 2025  
 </footer>
 
 </body>
