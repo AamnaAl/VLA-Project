@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vision–Language–Action Robotic Manipulation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Simple clean styling -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f7f9fc;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    header {
+        background: linear-gradient(135deg, #4b79ff, #5bd1ff);
+        color: white;
+        padding: 45px 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 32px;
+    }
+
+    .section {
+        max-width: 900px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        color: #265bff;
+        margin-top: 0;
+    }
+
+    .video-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    video {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .image {
+        width: 100%;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+
+    a.button {
+        display: inline-block;
+        background: #4b79ff;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+        color: #777;
+    }
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Vision–Language–Action Robotic Chess Manipulation</h1>
+    <p>By Aamna Alshehhi</p>
+</header>
+
+<div class="section">
+    <h2>📌 Project Overview</h2>
+    <p>
+        This project integrates perception (YOLOv8), probabilistic reasoning, 
+        language-grounded commands, and IK-based robotic manipulation inside CoppeliaSim.
+        The system interprets human instructions and executes complete pick-and-place actions.
+    </p>
+</div>
+
+<div class="section">
+    <h2>📑 Download the Presentation</h2>
+    <p>You can download the full project PowerPoint below:</p>
+
+    <!-- Update filename after upload -->
+    <a class="button" href="assets/Vision-Language-Action-Integration-for-Robotic-Chess-Piece-Manipulation" download>Download PPT</a>
+</div>
+
+<div class="section">
+    <h2>🧠 Pipeline Diagram</h2>
+
+    <!-- Upload image as assets/pipeline.png -->
+    <img src="assets/pipeline.png" class="image" alt="Pipeline Diagram">
+</div>
+
+<div class="section">
+    <h2>🎥 Simulation Videos</h2>
+    <div class="video-container">
+        
+        <h3>Pick the Queen → Left Bin</h3>
+        <!-- Upload video as assets/queen.mp4 -->
+        <video controls src="assets/queen_left.mp4"></video>
+
+        <h3>Pick the King → Right Bin</h3>
+        <!-- Upload video as assets/king.mp4 -->
+        <video controls src="assets/king_right.mp4"></video>
+
+        <h3>Additional Execution</h3>
+        <video controls src="assets/king_right.mp4"></video>
+
+    </div>
+</div>
+
+<div class="section">
+    <h2>📸 YOLO Detection Samples</h2>
+
+    <!-- Upload images: yolo1.png, yolo2.png -->
+    <img src="assets/yolo1.png" class="image" alt="YOLO Detection 1">
+    <img src="assets/yolo2.png" class="image" alt="YOLO Detection 2">
+    <h3>Additional Execution</h3>
+    <video controls src="assets/detection.mp4"></video>
+</div>
+
+<div class="section">
+    <h2>📈 Results Summary</h2>
+    <ul>
+        <li>YOLO detection average confidence: <b>0.80</b></li>
+        <li>End-to-end pipeline success rate: <b>~80%</b></li>
+        <li>Real-time perception: <b>≈ 30 Hz</b></li>
+        <li>Consistent IK-based pick-and-place execution</li>
+    </ul>
+</div>
+
+<footer>
+    © 2025 Aamna Alshehhi — Vision–Language–Action Robotics Project
+</footer>
+
+</body>
+</html>
